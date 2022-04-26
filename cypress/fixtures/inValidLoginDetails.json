@@ -1,0 +1,20 @@
+[
+    {
+        "username": "att",
+        "password": "Atest12345*",
+        "status":"valid"
+    },
+
+    {
+        "username": "swse",
+        "password": "wr",
+        "status":"valid"
+    },
+
+    {  
+        "username": "wrong",
+        "password": "wron!@#",
+        "status":"valid"  
+    }
+   
+]
