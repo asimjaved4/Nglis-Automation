@@ -66,13 +66,14 @@ class miniAccessioning {
             savedraftbtn.click().wait(4000)
         }
     }
-    caseadditonVerification(plastn) {
-        cy.get('#addactive_cases>tbody>tr:nth-child(1)>td:nth-child(2)').contains('td', plastn).should('be.visible')
+    // caseadditonVerification(successmessage) {
+    //    const successmsgr =  cy.get('.notifier__notification-message')
+    //    successmsgr.should('contain.text', successmessage)
 
-    }
-    verifytext(text) {
-        const vtext= cy.get('#normal-view > div > div:nth-child(2) > div:nth-child(1) > div > div')
-        vtext.should('have.text',text)
-    }
+    // }
+    // verifytext(text) {
+    //     const vtext= cy.get('.invalid-feedback')
+    //     vtext.should('include.text',text)
+    // }
 }
 export default miniAccessioning

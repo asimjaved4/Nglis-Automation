@@ -24,7 +24,7 @@ class detailedAccessioned {
             dcolbc.should('be.visible').should('not.be.checked').click()
         }
         else {
-            
+
         }
     }
     selectsentdate(sdate) {
@@ -49,7 +49,7 @@ class detailedAccessioned {
     }
     selectgender(sgn) {
         const sgender = cy.get('#gender-select')
-        sgender.select(sgn)
+        sgender.select(sgn).should('have.value', sgn)
     }
     selectpatienttype(patype) {
         const ptype = cy.get(':nth-child(6) > .col-md-8 > .form-control > .ng-select-container > .ng-value-container > .ng-input > input')
@@ -61,7 +61,51 @@ class detailedAccessioned {
         const addspecbutton = cy.get(':nth-child(4) > .col-md-1 > .btn')
         addspecbutton.click()
     }
-    
+    navAddAttachments() {
+        const addattach = cy.get('#att_button')
+        addattach.click()
+    }
+    selectAttachmentTyppe(attype) {
+        const selectattachtype = cy.get('#attachment-select')
+        selectattachtype.select(attype).contains(attype)
+        //selectattachtype.select(attype).contains(attype)
+    }
+    selectFile(filepath) {
+        const chosebutton = cy.get('#upload-att')
+        chosebutton.attachFile(filepath).wait(2000)
+        // const verifyuploadedreport = cy.get('#caseattach_tab > div.table > .table > tbody > tr > :nth-child(1)')
+        // cy.wait(2000)
+        // verifyuploadedreport.contains('Consent Form')
+    }
+    createCase(CaseAs) {
+        if (CaseAs == 'sn') {
+            const dSaveAndNewbutton = cy.get('[featurecode="SPCA-SN"]')
+            dSaveAndNewbutton.click().wait(1000)
+        }
+        else if (CaseAs == 'sp') {
+            const dSaveAndPrintbutton = cy.get('[featurecode="SPCA-SP"]')
+            dSaveAndPrintbutton.click().wait(1000)
+        }
+        else {
+            const dSaveAndPrintbutton = cy.get('[featurecode="SPCA-SD"]')
+            dSaveAndPrintbutton.click().wait(1000)
+        }
+    }
+    clicksubmitbutton() {
+        const submitbutton = cy.get('#submitModal > div > div > div.modal-footer > a')
+        submitbutton.click()
+        cy.wait(4000)
+    }
+    // verifycaseacreation(successmessage) {
+    //     const caseaddmsg = cy.get('#content > div > notifier-container > ul > li:nth-child(1)')
+    //     caseaddmsg.should('contain.text', successmessage)
+    // }
+    // validatetext(text){
+    //     const vnontext =cy.get('.invalid-feedback')
+    //     vnontext.should('include.text',text)
+    // }
+
 
 }
+
 export default detailedAccessioned

@@ -1,23 +1,19 @@
-[
-    {
-        "ClientName": "asimtest",
-        "PhysicianName": "asim z",
-        "PatientLastName": "detaicase",
-        "PatientFirstName": "co",
-        "PatientDOB": "2015-02-01",
-        "SpecimenType": "nasal",
-        "CollectionDate": "2022-04-17T12:10",
-        "CollectedBy": "sip",
-        "createCaseAs": "sn",
-        "verifycase": "auttest12",
-        "SentDate":"2022-04-17T12:10",
-        "ReceivingDate":"2022-04-17T12:10",
-        "Gender":"m",
-        "PatientType":"General",
-        "AttachmentType":"consent"
-    },
-    {
-        "createCaseAs": "sn",
-        "validationtext": "You did not provide Patient Last Name."
-    }
-]
+{
+    "ClientName": "asimtest",
+    "PhysicianName": "asim z",
+    "PatientLastName": "decase",
+    "PatientFirstName": "cfjjxo",
+    "PatientDOB": "2015-02-01",
+    "SpecimenType": "nasal",
+    "CollectionDate": "2022-02-17T12:10",
+    "CollectedBy": "sip",
+    "createCaseAs": "sn",
+    "SentDate": "2022-04-17T12:10",
+    "ReceivingDate": "2022-04-17T12:10",
+    "Gender": "m",
+    "PatientType": "General",
+    "AttachmentType": "Consent Form",
+    "AttachmentFilePAth": "testfiles/TV22-827_04152022_122347.pdf",
+    "SuccessMessage": "Patient Created Successfully",
+    "validationtext": "You did not"
+}

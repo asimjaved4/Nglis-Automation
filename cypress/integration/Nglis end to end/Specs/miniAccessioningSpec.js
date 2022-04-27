@@ -3,9 +3,11 @@ import miniAccessioning from "../../../Pages/miniAccessioningPage";
 import login from "../../../Pages/loginPage"
 import logout from "../../../Pages/logoutPage"
 import manageCases from "../../../Pages/manageCasesPage"
+import validateActions from "../../../Pages/validation";
 
 const managecasesp = new manageCases()
 const miniAcc = new miniAccessioning()
+const notif =new validateActions()
 
 
 describe('Create Mini Accessioned Cases', function () {
@@ -35,23 +37,23 @@ describe('Create Mini Accessioned Cases', function () {
     it('Create Mini Accessioned with mandatory fields', function () {
 
         cy.fixture('CaseDetails').then((casedetails) => {
-            miniAcc.selectclient(casedetails[0].ClientName)
-            miniAcc.selectPhysician(casedetails[0].PhysicianName)
-            miniAcc.enterPLastName(casedetails[0].PatientLastName)
-            miniAcc.enterPFLastName(casedetails[0].PatientFirstName)
-            miniAcc.enterpdob(casedetails[0].PatientDOB)
-            miniAcc.selectSpecimentype(casedetails[0].SpecimenType)
-            miniAcc.selectCollectionDate(casedetails[0].CollectionDate)
-            miniAcc.selectCollectedBy(casedetails[0].CollectedBy)
-            miniAcc.createCase(casedetails[0].createCaseAs)
-            miniAcc.caseadditonVerification(casedetails[0].verifycase)
+            miniAcc.selectclient(casedetails.ClientName)
+            miniAcc.selectPhysician(casedetails.PhysicianName)
+            miniAcc.enterPLastName(casedetails.PatientLastName)
+            miniAcc.enterPFLastName(casedetails.PatientFirstName)
+            miniAcc.enterpdob(casedetails.PatientDOB)
+            miniAcc.selectSpecimentype(casedetails.SpecimenType)
+            miniAcc.selectCollectionDate(casedetails.CollectionDate)
+            miniAcc.selectCollectedBy(casedetails.CollectedBy)
+            miniAcc.createCase(casedetails.createCaseAs)
+            notif.patientcreatedSuccesufully(casedetails.SuccessMessage)
         })
 
     })
-    it('User should not able be to Create Mini Case without mandatory fields', function () {
+    it.skip('User should not able be to Create Mini Case without mandatory fields', function () {
         cy.fixture('CaseDetails').then((nonmanddata) => {
-            miniAcc.createCase(nonmanddata[1].createCaseAs)
-            miniAcc.verifytext(nonmanddata[1].validationtext)
+            miniAcc.createCase(nonmanddata.createCaseAs)
+            notif.verifyCaseNotCreated(nonmanddata.validationtext)
         })
     })
 
