@@ -27,13 +27,13 @@ class miniAccessioning {
     }
     enterpdob(dobp) {
         const pdob = cy.get('#p-dob11')
-        pdob.type(dobp)
-        cy.wait(2000)
+        pdob.type(dobp).wait(1000)
+        
+
     }
     selectSpecimentype(sptype) {
         const selectSpecimen = cy.get('#normal-view > div > div:nth-child(3) > div:nth-child(1) > div > ng-select > div > div > div.ng-input > input[type=text]')
         selectSpecimen.type(sptype).wait(2000).type('{enter}')
-
     }
     selectCollectionDate(coldate) {
         const selectColDate = cy.get('#p-colldate22')
@@ -55,25 +55,17 @@ class miniAccessioning {
             const saveNewBtn = cy.get(".card-header > .no-arrow > :nth-child(2)")
             saveNewBtn.click()
             const closepopup = cy.get('#createnewcaseModal')
-            closepopup.click().wait(4000)
+            closepopup.click().wait(1000)
         }
         else if (bvalue == 'sp') {
             const savePrintBtn = cy.get(".card-header > .no-arrow > :nth-child(1)")
-            savePrintBtn.click().wait(4000)
+            savePrintBtn.click().wait(1000)
         }
         else {
             const savedraftbtn = cy.get(".card-header > .no-arrow > :nth-child(3)")
-            savedraftbtn.click().wait(4000)
+            savedraftbtn.click().wait(1000)
         }
     }
-    // caseadditonVerification(successmessage) {
-    //    const successmsgr =  cy.get('.notifier__notification-message')
-    //    successmsgr.should('contain.text', successmessage)
-
-    // }
-    // verifytext(text) {
-    //     const vtext= cy.get('.invalid-feedback')
-    //     vtext.should('include.text',text)
-    // }
+    
 }
 export default miniAccessioning

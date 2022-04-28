@@ -1,9 +1,9 @@
 {
     "ClientName": "asimtest",
     "PhysicianName": "asim z",
-    "PatientLastName": "decase",
-    "PatientFirstName": "cfjjxo",
-    "PatientDOB": "2015-02-01",
+    "PatientLastName": "xse",
+    "PatientFirstName": "ffo",
+    "PatientDOB": "2015-06-01",
     "SpecimenType": "nasal",
     "CollectionDate": "2022-02-17T12:10",
     "CollectedBy": "sip",
@@ -14,6 +14,7 @@
     "PatientType": "General",
     "AttachmentType": "Consent Form",
     "AttachmentFilePAth": "testfiles/TV22-827_04152022_122347.pdf",
-    "SuccessMessage": "Patient Created Successfully",
-    "validationtext": "You did not"
+    "SuccessMessage": "successfully",
+    "validationtext": "You did not",
+    "Confirmation_Msg": "Already Exist"
 }

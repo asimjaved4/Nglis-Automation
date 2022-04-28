@@ -96,14 +96,14 @@ class detailedAccessioned {
         submitbutton.click()
         cy.wait(4000)
     }
-    // verifycaseacreation(successmessage) {
-    //     const caseaddmsg = cy.get('#content > div > notifier-container > ul > li:nth-child(1)')
-    //     caseaddmsg.should('contain.text', successmessage)
-    // }
-    // validatetext(text){
-    //     const vnontext =cy.get('.invalid-feedback')
-    //     vnontext.should('include.text',text)
-    // }
+    verifycaseacreation(successmessage) {
+        const caseaddmsg = cy.get('#content > div > notifier-container > ul > li:nth-child(1)')
+        caseaddmsg.should('contain.text', successmessage)
+    }
+    validatetext(text){
+        const vnontext =cy.get('.invalid-feedback')
+        vnontext.should('include.text',text)
+    }
 
 
 }

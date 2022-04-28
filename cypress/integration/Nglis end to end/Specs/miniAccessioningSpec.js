@@ -34,7 +34,7 @@ describe('Create Mini Accessioned Cases', function () {
         logoutp.clickOnlogOutButton()
     })
     
-    it('Create Mini Accessioned with mandatory fields', function () {
+    it.skip('Create Mini Accessioned with mandatory fields', function () {
 
         cy.fixture('CaseDetails').then((casedetails) => {
             miniAcc.selectclient(casedetails.ClientName)
@@ -47,13 +47,30 @@ describe('Create Mini Accessioned Cases', function () {
             miniAcc.selectCollectedBy(casedetails.CollectedBy)
             miniAcc.createCase(casedetails.createCaseAs)
             notif.patientcreatedSuccesufully(casedetails.SuccessMessage)
+         
         })
 
     })
-    it.skip('User should not able be to Create Mini Case without mandatory fields', function () {
+    it('User should not able be to Create Mini Case without mandatory fields', function () {
         cy.fixture('CaseDetails').then((nonmanddata) => {
             miniAcc.createCase(nonmanddata.createCaseAs)
             notif.verifyCaseNotCreated(nonmanddata.validationtext)
+        })
+    })
+    it('System should generate Patient already exist popup',function(){
+        cy.fixture('CaseDetails').then((casedetails) => {
+            miniAcc.selectclient(casedetails.ClientName)
+            miniAcc.selectPhysician(casedetails.PhysicianName)
+            miniAcc.enterPLastName(casedetails.PatientLastName)
+            miniAcc.enterPFLastName(casedetails.PatientFirstName)
+            miniAcc.enterpdob(casedetails.PatientDOB)
+            notif.verifypatientexist(casedetails.Confirmation_Msg)
+            miniAcc.selectSpecimentype(casedetails.SpecimenType)
+            miniAcc.selectCollectionDate(casedetails.CollectionDate)
+            miniAcc.selectCollectedBy(casedetails.CollectedBy)
+            miniAcc.createCase(casedetails.createCaseAs)
+            notif.patientcreatedSuccesufully(casedetails.SuccessMessage)
+         
         })
     })
 
