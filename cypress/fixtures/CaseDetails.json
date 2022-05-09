@@ -14,6 +14,7 @@
     "PatientType": "General",
     "AttachmentType": "Consent Form",
     "AttachmentFilePAth": "testfiles/TV22-827_04152022_122347.pdf",
+    "BulkAccessionFilePath":"/testfiles/Bacc nglis autotest.xlsx",
     "SuccessMessage": "successfully",
     "validationtext": "You did not",
     "Confirmation_Msg": "Already Exist"
