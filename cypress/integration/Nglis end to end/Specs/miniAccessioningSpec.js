@@ -34,7 +34,7 @@ describe('Create Mini Accessioned Cases', function () {
         logoutp.clickOnlogOutButton()
     })
     
-    it.skip('Create Mini Accessioned with mandatory fields', function () {
+    it('Create Mini Accessioned with mandatory fields', function () {
 
         cy.fixture('CaseDetails').then((casedetails) => {
             miniAcc.selectclient(casedetails.ClientName)

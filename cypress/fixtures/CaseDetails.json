@@ -1,9 +1,9 @@
 {
     "ClientName": "asimtest",
     "PhysicianName": "asim z",
-    "PatientLastName": "xse",
-    "PatientFirstName": "ffo",
-    "PatientDOB": "2015-06-01",
+    "PatientLastName": "test",
+    "PatientFirstName": "detail",
+    "PatientDOB": "2011-08-01",
     "SpecimenType": "nasal",
     "CollectionDate": "2022-02-17T12:10",
     "CollectedBy": "sip",

@@ -51,7 +51,7 @@ describe('Create Detailed Case', function () {
             notify.patientcreatedSuccesufully(detailcasedata.SuccessMessage)
         })
     })
-    it.skip('User should not be able to create detailed case without mandatory fields',function(){
+    it('User should not be able to create detailed case without mandatory fields',function(){
         cy.fixture('CaseDetails').then((nondata)=>{
             detailAcc.createCase(nondata.createCaseAs)
             detailAcc.clicksubmitbutton()
