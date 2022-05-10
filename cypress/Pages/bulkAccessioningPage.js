@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-class accessionedByBulk{
+class accessionedByBulk {
     openbulkAccession() {
         const bulkAcessionBTN = cy.get('#content > div > div > div > div.dropdown.no-arrow > a.btn.submit-button.btn-sm.pull-right.mr-2')
         bulkAcessionBTN.click()
@@ -16,7 +16,6 @@ class accessionedByBulk{
         const importBTN = cy.get('#importModal > div > div > div.modal-footer > a')
         importBTN.click().wait(3000)
     }
-
     downloadOutputFile() {
         const dbtn = cy.get('#import-successModal > div > div > div.modal-body > a > i')
         dbtn.click().wait(4000)

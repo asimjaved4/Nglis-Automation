@@ -2,6 +2,10 @@
 import login from "../../../Pages/loginPage"
 import logout from "../../../Pages/logoutPage"
 import manageCases from "../../../Pages/manageCasesPage"
+import validateActions from "../../../Pages/validation"
+
+const managecasesp = new manageCases()
+const notify =new validateActions()
 
 
 describe("Navigate to Manage Cases", function () {
@@ -15,20 +19,32 @@ describe("Navigate to Manage Cases", function () {
         cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/')
 
     })
-    it('Navigate to Manage cases by URL', function () {
-        const managecasesp = new manageCases()
-        managecasesp.OpenManagevasesURL('https://nglisuat.siparadigm.com/manage-cases')
+    it.skip('Navigate to Manage cases by URL', function () {
+        //  const managecasesp = new manageCases()
+        managecasesp.OpenManagevasesURL('manage-cases')
 
     })
 
-    it('Navigate to the Manage Cases by Case menu', function () {
+    it.skip('Navigate to the Manage Cases by Case menu', function () {
 
 
-        const managecasesp = new manageCases()
+        //  const managecasesp = new manageCases()
         managecasesp.caseMenu()
         managecasesp.navToManageCases()
         cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/manage-cases')
     })
+    it.skip('User should be able to submit draft case in manage case page', function () {
+        managecasesp.OpenManagevasesURL('manage-cases')
+        managecasesp.draftCaseSubmit('Draft')
+        notify.patientcreatedSuccesufully('successfully')
+
+    })
+    it('User should be able to submit draft case in detailed case with mandatory fields',function(){
+        managecasesp.OpenManagevasesURL('manage-cases')
+        managecasesp.draftDetailCaseSubmit('Draft')
+        cy.url().should('include','manage-cases')
+    })
+
     afterEach(() => {
 
         const logoutp = new logout()
