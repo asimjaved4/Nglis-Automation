@@ -39,10 +39,20 @@ describe("Navigate to Manage Cases", function () {
         notify.patientcreatedSuccesufully('successfully')
 
     })
-    it('User should be able to submit draft case in detailed case with mandatory fields',function(){
+    it.skip('User should be able to submit draft case in detailed case with mandatory fields',function(){
         managecasesp.OpenManagevasesURL('manage-cases')
         managecasesp.draftDetailCaseSubmit('Draft')
         cy.url().should('include','manage-cases')
+    })
+    it.skip('User should able to update draft case with mandatory fields',function(){
+        managecasesp.OpenManagevasesURL('manage-cases')
+        managecasesp.updateDraftCase('Draft')
+        notify.patientcreatedSuccesufully('successfully')
+    })
+    it('User should not be able to update draft case without mandatory fields',function(){
+        managecasesp.OpenManagevasesURL('manage-cases')
+        managecasesp.updateDraftCasenonMandatory('Draft')
+        notify.verifyCaseNotCreated('Please Select')
     })
 
     afterEach(() => {
