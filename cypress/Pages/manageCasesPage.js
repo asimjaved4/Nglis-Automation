@@ -54,6 +54,24 @@ class manageCases {
             }
         })
     }
+    navAllCasesTab() {
+        const allcasestab = cy.get("[href='#all_casestab']")
+        allcasestab.click().wait(1000)
+    }
+    navActiveCasestTab() {
+        const activecasestab = cy.get("[href='#active_casestab']")
+        activecasestab.click().wait(1000)
+    }
+    manageCasePrintLabel(casestatus){
+        cy.get('tbody[id=active_tbody]>tr td:nth-child(11)').each(($e, index, $list) => {
+            const text = $e.text()
+            if (text.includes(casestatus)) {
+                cy.get('tbody[id=active_tbody]>tr td:nth-child(12)> > a:nth-child(1)').eq(index).click().wait(3000)
+                
+            }
+        })
+    }
+    
 }
 
 export default manageCases

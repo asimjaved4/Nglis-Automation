@@ -78,7 +78,7 @@ describe('Create Mini Accessioned Cases', function () {
 
         })
     })
-    it.only('User should be able to Accessioned case by bulk', function () {
+    it('User should be able to Accessioned case by bulk', function () {
         cy.fixture('CaseDetails').then((bulkdata) => {
             bulk.openbulkAccession()
             bulk.chooseBulkfile(bulkdata.BulkAccessionFilePath)

@@ -19,13 +19,13 @@ describe("Navigate to Manage Cases", function () {
         cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/')
 
     })
-    it.skip('Navigate to Manage cases by URL', function () {
+    it('Navigate to Manage cases by URL', function () {
         //  const managecasesp = new manageCases()
         managecasesp.OpenManagevasesURL('manage-cases')
 
     })
 
-    it.skip('Navigate to the Manage Cases by Case menu', function () {
+    it('Navigate to the Manage Cases by Case menu', function () {
 
 
         //  const managecasesp = new manageCases()
@@ -33,18 +33,18 @@ describe("Navigate to Manage Cases", function () {
         managecasesp.navToManageCases()
         cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/manage-cases')
     })
-    it.skip('User should be able to submit draft case in manage case page', function () {
+    it('User should be able to submit draft case in manage case page', function () {
         managecasesp.OpenManagevasesURL('manage-cases')
         managecasesp.draftCaseSubmit('Draft')
         notify.patientcreatedSuccesufully('successfully')
 
     })
-    it.skip('User should be able to submit draft case in detailed case with mandatory fields',function(){
+    it('User should be able to submit draft case in detailed case with mandatory fields',function(){
         managecasesp.OpenManagevasesURL('manage-cases')
         managecasesp.draftDetailCaseSubmit('Draft')
         cy.url().should('include','manage-cases')
     })
-    it.skip('User should able to update draft case with mandatory fields',function(){
+    it('User should able to update draft case with mandatory fields',function(){
         managecasesp.OpenManagevasesURL('manage-cases')
         managecasesp.updateDraftCase('Draft')
         notify.patientcreatedSuccesufully('successfully')
@@ -54,6 +54,13 @@ describe("Navigate to Manage Cases", function () {
         managecasesp.updateDraftCasenonMandatory('Draft')
         notify.verifyCaseNotCreated('Please Select')
     })
+    it('user should navigate to all cases & active Cases',function(){
+        managecasesp.OpenManagevasesURL('manage-cases')
+        managecasesp.navAllCasesTab()
+        managecasesp.navActiveCasestTab()
+    })
+    
+   
 
     afterEach(() => {
 
