@@ -17,12 +17,26 @@ class accessionedByBulk {
         importBTN.click().wait(3000)
     }
     downloadOutputFile() {
+        
         const dbtn = cy.get('#import-successModal > div > div > div.modal-body > a > i')
         dbtn.click().wait(4000)
+        
     }
     closeBulk() {
         const closebtn = cy.get('#import-successModal > div > div > div.modal-footer > button')
         closebtn.click()
     }
+    readExcelFile(){
+        cy.parseXlsx('cypress/fixtures/testfiles/Bacc nglis autotest.xlsx').then((jsonData) => {
+            //  const rowLength = Cypress.$(jsonData[1].data).length
+              for (let index = 0; index < 1; index++) {
+                  var jsonData = jsonData[index].data
+                  console.log(jsonData[index].data)
+                  cy.writeFile("cypress/fixtures/bulkdata.json", { firstname: jsonData[2][0], lastname: jsonData[2][1] })
+              }
+          })
+    }
+    
+    
 }
 export default accessionedByBulk

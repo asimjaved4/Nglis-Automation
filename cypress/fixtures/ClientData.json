@@ -1,0 +1,30 @@
+[
+   "Cl", {
+        "AccountType": "def",
+        "AccountID": "450086",
+        "ClientName": "tac5",
+        "Priority": "before no",
+        "ContactNo": "2513879151",
+        "Fax": "55632544",
+        "Email": "asim.javed+60@siparadigm.com",
+        "StreetAddress": "houseNO876",
+        "ZipCode": "98744",
+        "State": "Alaska",
+        "City": "anch",
+        "InternalUser": "asim test",
+        "EncriptionCode": "545",
+        "RequisitionType": "covid",
+        "AllowedFileSize": "2100",
+        "ClientStatus": "Active"
+    },
+    "user",{
+        "UserRole": "attending",
+        "Npi": "vfd44",
+        "UserEmail": "auot@at.com",
+        "PostNominal": "cbap",
+        "UserFirstname": "test1",
+        "UserLastName": "autcx",
+        "ContactNo": "3322435345",
+        "ClientProvidedFax": "55632333"
+    }
+]
