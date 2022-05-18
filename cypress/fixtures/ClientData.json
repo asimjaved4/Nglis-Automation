@@ -1,5 +1,5 @@
 [
-   "Cl", {
+    {
         "AccountType": "def",
         "AccountID": "450086",
         "ClientName": "tac5",
@@ -17,7 +17,7 @@
         "AllowedFileSize": "2100",
         "ClientStatus": "Active"
     },
-    "user",{
+    {
         "UserRole": "attending",
         "Npi": "vfd44",
         "UserEmail": "auot@at.com",

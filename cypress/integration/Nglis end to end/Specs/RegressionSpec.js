@@ -5,6 +5,9 @@ import accessionedByBulk from "../../../Pages/bulkAccessioningPage"
 import manageCases from "../../../Pages/manageCasesPage"
 import addNewClient from "../../../Pages/AddClient"
 import externalUsers from "../../../Pages/addExternalUsers"
+import patientsImport from "../../../Pages/importPatients"
+import addPatients from "../../../Pages/addPatients"
+import createNewIntake from "../../../Pages/createIntake"
 
 const managecasesp = new manageCases()
 //const miniAcc = new miniAccessioning()
@@ -13,6 +16,9 @@ const bulk = new accessionedByBulk()
 const logoutp = new logout()
 const client = new addNewClient()
 const addExtuser = new externalUsers()
+const imppatient = new patientsImport()
+const adpatients = new addPatients()
+const intake = new createNewIntake()
 
 describe('Regression SUite', function () {
     Cypress.on('uncaught:exception', (err, runnable) => {
@@ -87,9 +93,39 @@ describe('Regression SUite', function () {
 
         })
     })
-    
 
-    it.skip('Case Accessioning by Bulk', function () {
+    it('Add New Patients', function () {
+        cy.fixture('PatientDetail').then((patientdata) => {
+            imppatient.openPatientMenu()
+            imppatient.navManagePatient()
+            imppatient.clickOnImportPatientBTN()
+            imppatient.chooseFile(patientdata.PatientimportFile)
+            imppatient.clickOnImportBTN()
+            imppatient.validateFileimport(patientdata.ValidateSuccessfullyImportedFile)
+            imppatient.downloadOutputFile()
+            imppatient.closeimportPatientsPopUp()
+            imppatient.openPatientMenu()
+            adpatients.navAddPatient()
+            adpatients.selectPClient(patientdata.Client)
+            adpatients.enterSSN(patientdata.ssn)
+            adpatients.enterPLastName(patientdata.Lastname)
+            adpatients.enterPFirstName(patientdata.FirstName)
+            adpatients.enterPDateOfBirth(patientdata.dob)
+            adpatients.selectPGender(patientdata.gender)
+            adpatients.enterPEmail(patientdata.email)
+            adpatients.selectPPatientType(patientdata.Type)
+            adpatients.selectPBillingInfo(patientdata.billinginfo)
+            adpatients.selectPEthnicity(patientdata.ethnicity)
+            adpatients.selectPRace(patientdata.race)
+            adpatients.submitPatient()
+            adpatients.validatePatientCreated(patientdata.Lastname)
+            adpatients.collectSpecimen(patientdata.Specimen)
+            adpatients.closePopUp()
+
+        })
+
+    })
+    it('Case Accessioning by Bulk', function () {
         cy.fixture('CaseDetails').then((bulkdata) => {
 
             managecasesp.caseMenu()
@@ -104,5 +140,27 @@ describe('Regression SUite', function () {
             bulk.closeBulk()
 
         })
+    })
+    it.only('Create New Intake', function () {
+        cy.fixture('IntakeData').then((int) => {
+            intake.intakemenu()
+            intake.navManageIntake()
+            intake.clickcreatenewIntake()
+            intake.selectinClient(int.Client)
+            intake.selectinColby(int.CollecteBy)
+            intake.enterinNotes(int.Notes)
+            intake.enterEmptyKits(int.EmptyKit)
+            intake.enterLeftKit(int.LeftKit)
+            intake.enterNP(int.Np)
+            intake.enterN(int.n)
+            intake.enterOP(int.Op)
+            intake.entersal(int.sal)
+            intake.selectinattachFile(int.IntakeAttachmentPath)
+            intake.verifyintakeattachfile()
+            intake.submitintakeBtn()
+            intake.submitinakepopup()
+            intake.verifyAddIntakecy()
+        })
+
     })
 })

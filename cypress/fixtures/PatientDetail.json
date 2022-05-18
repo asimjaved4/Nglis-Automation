@@ -1,0 +1,18 @@
+{
+    "PatientimportFile": "/testfiles/bulk_Patients.xlsx",
+    "ValidateSuccessfullyImportedFile": "records imported successfully",
+    "Client": "asim",
+    "ssn": "565744",
+    "Lastname": "tst1",
+    "FirstName": "auft",
+    "dob": "2002-08-01",
+    "gender": "f",
+    "email": "asd@g.com",
+    "Type": "general",
+    "billinginfo": "Charged by the patient themselves",
+    "ethnicity":"unsp",
+    "race":"asian",
+    "Specimen":"np"
+    
+    
+}
