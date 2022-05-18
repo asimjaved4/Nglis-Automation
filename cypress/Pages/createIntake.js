@@ -2,7 +2,7 @@
 
 class createNewIntake {
     intakemenu() {
-    cy.get('.nav-link[aria-controls=intakenmodule]').click()
+        cy.get('.nav-link[aria-controls=intakenmodule]').click()
         //cy.wait(2000)
     }
     navManageIntake() {
@@ -15,8 +15,8 @@ class createNewIntake {
     }
     selectinClient(sinc) {
         cy.get('#collapsecases_list > form.ng-untouched > .card-body > #normal-view > :nth-child(1) > :nth-child(1) > :nth-child(1) > .col-md-8 > .form-control')
-        .type(sinc).wait(2000).type('{enter}')
-        
+            .type(sinc).wait(2000).type('{enter}')
+
 
     }
     selectinColby(incol) {
@@ -53,19 +53,33 @@ class createNewIntake {
     }
     verifyintakeattachfile() {
         cy.get('#normal-view > div > div:nth-child(3) > div.table.mb-0 > table > tbody > tr > td:nth-child(1)')
-        .contains('Intake Attachment')
+            .contains('Intake Attachment')
     }
     submitintakeBtn() {
         cy.get('#collapsecases_list > form > div.card-header.d-flex.justify-content-between.align-items-center.flex-row > div > a')
-        .click().wait(2000)
+            .click().wait(2000)
     }
     submitinakepopup() {
         cy.get('[style="display: block;"] > .modal-dialog > .modal-content > .modal-footer > .submit-button')
-        .click().wait(3000)
+            .click().wait(3000)
     }
     verifyAddIntakecy() {
         cy.get('#DataTables_Table_0 > tbody > tr:nth-child(1)')
-        .should('have.class','bgGreen')
+            .should('have.class', 'bgGreen')
+    }
+    openintake() {
+        cy.get('tbody > :nth-child(1) > :nth-child(1) > a').click().wait(2000)
+    }
+    scanCase(case_number) {
+        for (var i = 0; i < 3; i++) {
+            const scanbar = cy.get('#basic-url')
+            scanbar.clear().type("NV22-" + case_number)
+
+            cy.get('#addactive_cases>tbody > tr:nth-child(1) > td:nth-child(1) >a')
+                .should('have.text', "NV22-" + case_number)
+            case_number++
+        }
+
     }
 }
 export default createNewIntake

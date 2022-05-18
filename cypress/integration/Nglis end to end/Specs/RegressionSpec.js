@@ -141,7 +141,7 @@ describe('Regression SUite', function () {
 
         })
     })
-    it.only('Create New Intake', function () {
+    it.only('Create New Intake and Scan Cases in Intake', function () {
         cy.fixture('IntakeData').then((int) => {
             intake.intakemenu()
             intake.navManageIntake()
@@ -160,6 +160,11 @@ describe('Regression SUite', function () {
             intake.submitintakeBtn()
             intake.submitinakepopup()
             intake.verifyAddIntakecy()
+
+            // intake.intakemenu()
+            // intake.navManageIntake()
+            intake.openintake()
+            intake.scanCase("252")
         })
 
     })
