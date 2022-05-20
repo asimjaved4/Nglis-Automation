@@ -8,6 +8,7 @@ import externalUsers from "../../../Pages/addExternalUsers"
 import patientsImport from "../../../Pages/importPatients"
 import addPatients from "../../../Pages/addPatients"
 import createNewIntake from "../../../Pages/createIntake"
+import batchCreation from "../../../Pages/createBatch"
 
 const managecasesp = new manageCases()
 //const miniAcc = new miniAccessioning()
@@ -19,6 +20,7 @@ const addExtuser = new externalUsers()
 const imppatient = new patientsImport()
 const adpatients = new addPatients()
 const intake = new createNewIntake()
+const batch = new batchCreation()
 
 describe('Regression SUite', function () {
     Cypress.on('uncaught:exception', (err, runnable) => {
@@ -121,7 +123,6 @@ describe('Regression SUite', function () {
             adpatients.validatePatientCreated(patientdata.Lastname)
             adpatients.collectSpecimen(patientdata.Specimen)
             adpatients.closePopUp()
-
         })
 
     })
@@ -141,7 +142,7 @@ describe('Regression SUite', function () {
 
         })
     })
-    it.only('Create New Intake and Scan Cases in Intake', function () {
+    it('Create New Intake and Scan Cases in Intake', function () {
         cy.fixture('IntakeData').then((int) => {
             intake.intakemenu()
             intake.navManageIntake()
@@ -165,7 +166,22 @@ describe('Regression SUite', function () {
             // intake.navManageIntake()
             intake.openintake()
             intake.scanCase("252")
+            
+            // intake.navToCreateBatch()
+            // intake.enterBatchID('autobatch')
+            // intake.createBatch()
+            // cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/manage-batches')
+            //intake.validateBatch('autobatch')
         })
-
     })
+    it.only('Create New Batch', function () {
+        batch.openBatchMenu()
+        batch.openNewBatch()
+        batch.scanCasesInBatch('252')
+        batch.enterbatchID('autb1')
+        batch.clickCreateNewBatch()
+        cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/manage-batches')
+        batch.validateBatch('autb1')
+    })
+
 })

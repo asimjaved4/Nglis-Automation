@@ -79,7 +79,20 @@ class createNewIntake {
                 .should('have.text', "NV22-" + case_number)
             case_number++
         }
-
+    }
+    navToCreateBatch() {
+        cy.get('button[featurecode=TWMA-CNB]').click().wait(2000)
+    }
+    
+    enterBatchID(batch_id) {
+        cy.get('[name=batchId]').type(batch_id)
+    }
+    createBatch() {
+        cy.get('.btn.btn-sm.submit-button').invoke('remove','a').click().wait(4000)
+    }
+    validateBatch(batchid) {
+        cy.get('#covid19-active-batch>tbody>tr:nth-child(1)>td:nth-child(1)> a')
+            .should('have.text', batchid)
     }
 }
 export default createNewIntake
