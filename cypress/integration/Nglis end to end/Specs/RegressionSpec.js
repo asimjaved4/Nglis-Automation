@@ -22,7 +22,7 @@ const adpatients = new addPatients()
 const intake = new createNewIntake()
 const batch = new batchCreation()
 
-describe('Regression SUite', function () {
+describe('Regression Suite End to End', function () {
     Cypress.on('uncaught:exception', (err, runnable) => {
         return false;
     });
@@ -166,12 +166,12 @@ describe('Regression SUite', function () {
             // intake.navManageIntake()
             intake.openintake()
             intake.scanCase("252")
-            
+
             // intake.navToCreateBatch()
             // intake.enterBatchID('autobatch')
             // intake.createBatch()
             // cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/manage-batches')
-            //intake.validateBatch('autobatch')
+            // intake.validateBatch('autobatch')
         })
     })
     it.only('Create New Batch', function () {
@@ -179,7 +179,7 @@ describe('Regression SUite', function () {
         batch.openNewBatch()
         batch.scanCasesInBatch('252')
         batch.enterbatchID('autb1')
-        batch.clickCreateNewBatch()
+        // batch.clickCreateNewBatch()
         cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/manage-batches')
         batch.validateBatch('autb1')
     })
