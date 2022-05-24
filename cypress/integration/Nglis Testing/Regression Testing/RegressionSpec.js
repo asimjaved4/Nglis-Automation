@@ -164,8 +164,8 @@ describe('Regression Suite End to End', function () {
 
             // intake.intakemenu()
             // intake.navManageIntake()
-            intake.openintake()
-            intake.scanCase("252")
+            intake.openIntake()
+            intake.scanCase(int.prefix, int.casenumber)
 
             // intake.navToCreateBatch()
             // intake.enterBatchID('autobatch')
@@ -174,14 +174,16 @@ describe('Regression Suite End to End', function () {
             // intake.validateBatch('autobatch')
         })
     })
-    it.only('Create New Batch', function () {
-        batch.openBatchMenu()
-        batch.openNewBatch()
-        batch.scanCasesInBatch('252')
-        batch.enterbatchID('autb1')
-        // batch.clickCreateNewBatch()
-        cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/manage-batches')
-        batch.validateBatch('autb1')
+    it('Create New Batch', function () {
+        cy.fixture('IntakeData').then((int) => {
+            batch.openBatchMenu()
+            batch.openNewBatch()
+            batch.scanCasesInBatch(int.prefix, int.casenumber)
+            batch.enterbatchID(int.BatchID)
+            batch.clickCreateNewBatch()
+            cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/manage-batches')
+            batch.validateBatch(int.BatchID)
+        })
     })
 
 })

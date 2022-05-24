@@ -8,13 +8,13 @@ class login {
     }
     enterUsername(usrname) {
         const userName = cy.get('input[formcontrolname=userName]')
-        userName.clear().type(usrname)
-        return this
+        userName.type(usrname)
+        
     }
     enterPassword(pwd) {
         const uPassword = cy.get('input[formcontrolname=password]')
-        uPassword.clear().type(pwd)
-        return this
+        uPassword.type(pwd)
+        
     }
     submit() {
 

@@ -67,16 +67,16 @@ class createNewIntake {
         cy.get('#DataTables_Table_0 > tbody > tr:nth-child(1)')
             .should('have.class', 'bgGreen')
     }
-    openintake() {
-        cy.get('tbody > :nth-child(1) > :nth-child(1) > a').click().wait(2000)
+    openIntake() {
+        cy.get('tbody > :nth-child(1) > :nth-child(1) > a').click().wait(3000)
     }
-    scanCase(case_number) {
+    scanCase(prefix,case_number) {
         for (var i = 0; i < 3; i++) {
             const scanbar = cy.get('#basic-url')
-            scanbar.clear().type("NV22-" + case_number)
+            scanbar.clear().type(prefix + case_number).wait(2000)
 
             cy.get('#addactive_cases>tbody > tr:nth-child(1) > td:nth-child(1) >a')
-                .should('have.text', "NV22-" + case_number)
+                .should('have.text', prefix + case_number)
             case_number++
         }
     }

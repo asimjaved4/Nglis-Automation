@@ -7,11 +7,11 @@ class batchCreation {
     openNewBatch() {
         cy.get('#covidmodule > div > a:nth-child(1)').click().wait(2000)
     }
-    scanCasesInBatch(cnum) {
+    scanCasesInBatch(prefx,cnum) {
         var i = 0
 
         for (i = 0; i < 3; i++) {
-            cy.get('#casenumberInput').clear().type("NV22-" + cnum).wait(1000)
+            cy.get('#casenumberInput').clear().type(prefx + cnum).wait(2000)
             cnum++
         }
     }
@@ -21,6 +21,7 @@ class batchCreation {
     clickCreateNewBatch() {
         cy.get('.btn.btn-sm.submit-button')
             .click().wait(3000)
+            
     }
     validateBatch(batchid) {
         cy.get('#covid19-active-batch>tbody>tr:nth-child(1)>td:nth-child(1)> a')
