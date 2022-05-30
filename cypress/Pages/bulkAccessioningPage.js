@@ -41,10 +41,7 @@ class accessionedByBulk {
             ///}
         })
     }
-    writeresultuploadfile(){
-            cy.writeFile('cypress/fixtures/testfiles/resup_auto.csv','hello')
-        
-    }
+   
 
 
 }
