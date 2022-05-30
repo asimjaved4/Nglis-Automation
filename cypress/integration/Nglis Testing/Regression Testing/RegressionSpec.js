@@ -28,22 +28,22 @@ describe('Regression Suite End to End', function () {
     });
 
 
-    beforeEach(() => {
-        const loggp = new login()
-        loggp.navigate('login')
-        loggp.enterUsername('atest')
-        loggp.enterPassword('Atest12345*')
-        loggp.submit()
-        cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/')
+    // beforeEach(() => {
+    //     const loggp = new login()
+    //     loggp.navigate('login')
+    //     loggp.enterUsername('atest')
+    //     loggp.enterPassword('Atest12345*')
+    //     loggp.submit()
+    //     cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/')
 
-    })
-    afterEach(() => {
+    // })
+    // afterEach(() => {
 
 
-        logoutp.profileMenu()
-        logoutp.openlogOut()
-        logoutp.clickOnlogOutButton()
-    })
+    //     logoutp.profileMenu()
+    //     logoutp.openlogOut()
+    //     logoutp.clickOnlogOutButton()
+    // })
     it('Create New Client', function () {
         cy.fixture('ClientData').then((clientinfo) => {
             client.clientMenu()
@@ -126,19 +126,21 @@ describe('Regression Suite End to End', function () {
         })
 
     })
-    it('Case Accessioning by Bulk', function () {
+    it.only('Case Accessioning by Bulk', function () {
         cy.fixture('CaseDetails').then((bulkdata) => {
 
-            managecasesp.caseMenu()
-            managecasesp.navToManageCases()
-            cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/manage-cases')
-            bulk.readExcelFile()
-            bulk.openbulkAccession()
-            bulk.chooseBulkfile(bulkdata.BulkAccessionFilePath)
-            bulk.clicOnImport()
-            bulk.verifyFile()
-            bulk.downloadOutputFile()
-            bulk.closeBulk()
+            // managecasesp.caseMenu()
+            // managecasesp.navToManageCases()
+            // cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/manage-cases')
+            // bulk.readExcelFile()
+            // bulk.openbulkAccession()
+            // bulk.chooseBulkfile(bulkdata.BulkAccessionFilePath)
+            // bulk.clicOnImport()
+            // bulk.verifyFile()
+            // bulk.downloadOutputFile()
+            // bulk.closeBulk()
+            //bulk.readExcelFile()
+            bulk.writeresultuploadfile()
 
         })
     })
