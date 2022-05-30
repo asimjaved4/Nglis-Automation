@@ -30,7 +30,7 @@ class accessionedByBulk {
         cy.parseXlsx('cypress/downloads/download.xlsx').then((jsonData) => {
             //const rowLength = Cypress.$(jsonData[0].data).length
             //for (let i = 2; i < 6; i++) {
-
+//aa
             //   var jsonData = jsonData[0].data
             //  console.log(jsonData[index].data)
             cy.writeFile("cypress/fixtures/bulkdata.json", [
@@ -38,7 +38,7 @@ class accessionedByBulk {
                 { firstname: jsonData[0].data[3][0], lastname: jsonData[0].data[3][1], caseNo: jsonData[0].data[3][18] },
                 { firstname: jsonData[0].data[4][0], lastname: jsonData[0].data[4][1], caseNo: jsonData[0].data[4][18] },
                 { firstname: jsonData[0].data[5][0], lastname: jsonData[0].data[5][1], caseNo: jsonData[0].data[5][18] }])
-            //}
+            ///}
         })
     }
     writeresultuploadfile(){
