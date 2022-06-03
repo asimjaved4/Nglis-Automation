@@ -9,6 +9,7 @@ import patientsImport from "../../../Pages/importPatients"
 import addPatients from "../../../Pages/addPatients"
 import createNewIntake from "../../../Pages/createIntake"
 import batchCreation from "../../../Pages/createBatch"
+import Report from "../../../Pages/manageReport"
 
 const managecasesp = new manageCases()
 //const miniAcc = new miniAccessioning()
@@ -21,6 +22,7 @@ const imppatient = new patientsImport()
 const adpatients = new addPatients()
 const intake = new createNewIntake()
 const batch = new batchCreation()
+const mreport = new Report()
 
 describe('Regression Suite End to End', function () {
     Cypress.on('uncaught:exception', (err, runnable) => {
@@ -28,22 +30,22 @@ describe('Regression Suite End to End', function () {
     });
 
 
-    // beforeEach(() => {
-    //     const loggp = new login()
-    //     loggp.navigate('login')
-    //     loggp.enterUsername('atest')
-    //     loggp.enterPassword('Atest12345*')
-    //     loggp.submit()
-    //     cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/')
+    beforeEach(() => {
+        const loggp = new login()
+        loggp.navigate('login')
+        loggp.enterUsername('atest')
+        loggp.enterPassword('Atest12345*')
+        loggp.submit()
+        cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/')
 
-    // })
-    // afterEach(() => {
+    })
+    afterEach(() => {
 
 
-    //     logoutp.profileMenu()
-    //     logoutp.openlogOut()
-    //     logoutp.clickOnlogOutButton()
-    // })
+        logoutp.profileMenu()
+        logoutp.openlogOut()
+        logoutp.clickOnlogOutButton()
+    })
     it('Create New Client', function () {
         cy.fixture('ClientData').then((clientinfo) => {
             client.clientMenu()
@@ -126,46 +128,46 @@ describe('Regression Suite End to End', function () {
         })
 
     })
-    it.only('Case Accessioning by Bulk', function () {
+    it('Case Accessioning by Bulk', function () {
         cy.fixture('CaseDetails').then((bulkdata) => {
 
-            // managecasesp.caseMenu()
-            // managecasesp.navToManageCases()
-            // cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/manage-cases')
-            // bulk.readExcelFile()
-            // bulk.openbulkAccession()
-            // bulk.chooseBulkfile(bulkdata.BulkAccessionFilePath)
-            // bulk.clicOnImport()
-            // bulk.verifyFile()
-            // bulk.downloadOutputFile()
-            // bulk.closeBulk()
-            //bulk.readExcelFile()
-            bulk.writeresultuploadfile()
+            managecasesp.caseMenu()
+            managecasesp.navToManageCases()
+            cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/manage-cases')
+            bulk.readExcelFile()
+            bulk.openbulkAccession()
+            bulk.chooseBulkfile(bulkdata.BulkAccessionFilePath)
+            bulk.clicOnImport()
+            bulk.verifyFile()
+            bulk.downloadOutputFile()
+            bulk.closeBulk()
+            bulk.readExcelFile()
+
 
         })
     })
-    it('Create New Intake and Scan Cases in Intake', function () {
+    it.only('Create New Intake and Scan Cases in Intake', function () {
         cy.fixture('IntakeData').then((int) => {
-            intake.intakemenu()
-            intake.navManageIntake()
-            intake.clickcreatenewIntake()
-            intake.selectinClient(int.Client)
-            intake.selectinColby(int.CollecteBy)
-            intake.enterinNotes(int.Notes)
-            intake.enterEmptyKits(int.EmptyKit)
-            intake.enterLeftKit(int.LeftKit)
-            intake.enterNP(int.Np)
-            intake.enterN(int.n)
-            intake.enterOP(int.Op)
-            intake.entersal(int.sal)
-            intake.selectinattachFile(int.IntakeAttachmentPath)
-            intake.verifyintakeattachfile()
-            intake.submitintakeBtn()
-            intake.submitinakepopup()
-            intake.verifyAddIntakecy()
-
             // intake.intakemenu()
             // intake.navManageIntake()
+            // intake.clickcreatenewIntake()
+            // intake.selectinClient(int.Client)
+            // intake.selectinColby(int.CollecteBy)
+            // intake.enterinNotes(int.Notes)
+            // intake.enterEmptyKits(int.EmptyKit)
+            // intake.enterLeftKit(int.LeftKit)
+            // intake.enterNP(int.Np)
+            // intake.enterN(int.n)
+            // intake.enterOP(int.Op)
+            // intake.entersal(int.sal)
+            // intake.selectinattachFile(int.IntakeAttachmentPath)
+            // intake.verifyintakeattachfile()
+            // intake.submitintakeBtn()
+            // intake.submitinakepopup()
+            // intake.verifyAddIntakecy()
+
+            intake.intakemenu()
+            intake.navManageIntake()
             intake.openIntake()
             intake.scanCase(int.prefix, int.casenumber)
 
@@ -186,6 +188,13 @@ describe('Regression Suite End to End', function () {
             cy.url().should('be.equal', 'https://nglisuat.siparadigm.com/manage-batches')
             batch.validateBatch(int.BatchID)
         })
+    })
+    it('Navigate to Manage Report', function () {
+        mreport.reportMenu()
+        mreport.navToManageReport()
+        mreport.selectClient('asim')
+        mreport.selectIntakeID('int-04012022-1')
+        mreport.clickOnSearch()
     })
 
 })

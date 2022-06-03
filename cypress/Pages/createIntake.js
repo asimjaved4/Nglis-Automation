@@ -70,7 +70,7 @@ class createNewIntake {
     openIntake() {
         cy.get('tbody > :nth-child(1) > :nth-child(1) > a').click().wait(3000)
     }
-    scanCase(prefix,case_number) {
+    scanCase(prefix, case_number) {
         for (var i = 0; i < 3; i++) {
             const scanbar = cy.get('#basic-url')
             scanbar.clear().type(prefix + case_number).wait(2000)
@@ -83,12 +83,12 @@ class createNewIntake {
     navToCreateBatch() {
         cy.get('button[featurecode=TWMA-CNB]').click().wait(2000)
     }
-    
+
     enterBatchID(batch_id) {
         cy.get('[name=batchId]').type(batch_id)
     }
     createBatch() {
-        cy.get('.btn.btn-sm.submit-button').invoke('remove','a').click().wait(4000)
+        cy.get('.btn.btn-sm.submit-button').invoke('remove', 'a').click().wait(4000)
     }
     validateBatch(batchid) {
         cy.get('#covid19-active-batch>tbody>tr:nth-child(1)>td:nth-child(1)> a')
